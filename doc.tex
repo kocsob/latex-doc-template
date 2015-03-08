@@ -1,0 +1,142 @@
+\documentclass[12pt,a4paper,oneside]{article}             	% Single-side
+%\documentclass[11pt,a4paper,twoside,openright]{report}  	% Duplex
+
+%--------------------------------------------------------------------------------------
+% Requiered packages
+%--------------------------------------------------------------------------------------
+
+\usepackage{t1enc}					% special characters
+\usepackage[utf8]{inputenc}			% UTF-8 encoding
+\usepackage[magyar]{babel}			% hungarian babel
+\usepackage{graphicx}
+
+\usepackage[margin=2.5cm]{geometry} % margin = 2,5cm
+\usepackage{fancyhdr}				% custom page style
+\usepackage{float}					% float as Word stlye, usage: write [H] instead of [h!] or [ht!]
+\usepackage[hyphens]{url}			% url package with hyphenation
+\usepackage[hidelinks]{hyperref}	% clickable references without colorful frames
+\usepackage{setspace}  				% for singe and onhalfspacing
+\usepackage[normalem]{ulem}			% underline, overline in text
+\usepackage{longtable}				% for long tables, thats are bigger than A4 paper
+\usepackage{multirow}				% join rows in table with \multirow{rowcnt}{style}{text}
+
+\usepackage{listings} 				% for code highlighting
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{upquote} 				% don't replace ' to `
+
+\usepackage{pifont}					% Pifont symbols
+\usepackage{comment}				% comment LaTeX code with \begin{comment} and \end{comment}
+
+
+%--------------------------------------------------------------------------------------
+% Default variables
+%--------------------------------------------------------------------------------------
+
+\newcommand{\doctitle}{\LaTeX\ template}
+\newcommand{\docsubtitle}{}
+\newcommand{\docauthor}{Kócsó Balázs}
+\newcommand{\docconsultant}{Konzulens Kázmér}
+\newcommand{\docplace}{Budapest}
+\newcommand{\docyear}{\the\year}
+
+%--------------------------------------------------------------------------------------
+% Header and footer settings
+%--------------------------------------------------------------------------------------
+
+\fancyhf{}
+\fancyhead[OL] { \leftmark{} }
+\fancyhead[OR] { \doctitle }
+\fancyfoot[OC] { \thepage }
+\pagestyle{fancy}
+
+
+%--------------------------------------------------------------------------------------
+% Settings
+%--------------------------------------------------------------------------------------
+
+\singlespacing
+%\setlength\parindent{0pt}
+%\frenchspacing
+
+\hypersetup{
+    pdftitle={\doctitle},       % title
+    pdfauthor={\docauthor},    	% author
+    pdfcreator={\docauthor},	% creator of the document
+    colorlinks=true,			% false: boxed links; true: colored links
+    linkcolor=black,			% color of internal links
+    citecolor=black,			% color of links to bibliography
+    filecolor=black,			% color of file links
+    urlcolor=black				% color of external links
+}
+
+\input{lstset.tex}
+%\renewcommand{\lstlistingname}{Code}
+%usage: \begin{lstlisting} [caption = Awesome python code, captionpos = b]
+
+%hyphenation with texttt stlye
+\makeatletter %only in the preamble
+\DeclareRobustCommand\origttfamily
+        {\not@math@alphabet\ttfamily\mathtt
+         \fontfamily\ttdefault\selectfont\hyphenchar\font=-1}
+\DeclareTextFontCommand{\texttorig}{\origttfamily}
+\DeclareRobustCommand\ttfamily
+        {\not@math@alphabet\ttfamily\mathtt
+         \fontfamily\ttdefault\selectfont\hyphenchar\font=`\-}
+\makeatother %only in the preamble
+
+
+%--------------------------------------------------------------------------------------
+% Own commands
+%--------------------------------------------------------------------------------------
+
+\newcommand{\comm}[1]{\textcolor{green}{\ #1}}		    %green comment
+\newcommand{\corr}[2]{\sout{#1}\textcolor{red}{\ #2}}   %correction comment: first attribute overlined, second attribute red
+
+\newcommand{\checked}{\textcolor{green}{\ding{51}}}     %checked
+\newcommand{\unchecked}{\textcolor{red}{\ding{55}}}	    %unchecked
+
+\newcommand{\TODO}{{\color{red} \textbf{TODO}}} 	    % TODO command
+
+
+%--------------------------------------------------------------------------------------
+% Main text and the table of contents
+%--------------------------------------------------------------------------------------
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+    \resizebox{11cm}{!}{\includegraphics{kisbme.jpg}} \\
+    {\large \bf Budapesti Műszaki és Gazdaságtudományi Egyetem} \\
+    \vfill {\Huge \bf \doctitle \mbox{}} \\
+    [15pt]{\Large \docsubtitle \mbox{}} \\
+    [30pt]{\Huge \docauthor} \vfill
+    {\bf Konzulens}: \docconsultant
+    \vfill
+    {\Large \docplace, \docyear.} \\
+    \LaTeX %\quad \&\quad Ti\emph{k}Z
+\end{center}
+\end{titlepage}
+
+\section{Ez az első szakasz}
+... Ide jön a szöveg ...
+
+\begin{figure}[H]	%Picture Here - "float" package required
+\center
+\resizebox{130mm}{!}{
+\includegraphics{figures/picture.jpg}}
+\caption{Kép beszúrása}
+\label{picture}		%képhivatkozás
+\end{figure}
+
+
+
+%\tableofcontents\vfill
+
+%\listoffigures\addcontentsline{toc}{chapter}{Ábrák jegyzéke}
+%\listoftables\addcontentsline{toc}{chapter}{Táblázatok jegyzéke}
+
+%\bibliography{references}
+%\addcontentsline{toc}{chapter}{Irodalomjegyzék}
+%\bibliographystyle{plain}
+\end{document}
