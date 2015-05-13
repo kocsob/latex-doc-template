@@ -1,41 +1,67 @@
+%--------------------------------------------------------------------------------------
+%Required packages:
+%--------------------------------------------------------------------------------------
+%\usepackage{listings}
+%\usepackage{color}
+%\usepackage[usenames,dvipsnames]{xcolor}
+
+
+%--------------------------------------------------------------------------------------
+% Defined colors
+%--------------------------------------------------------------------------------------
+
 \definecolor{vsblue} {rgb}{0.0,0.0,1.0} % keywords
 \definecolor{vsgreen}{rgb}{0.0,0.5,0.0} % comments
 \definecolor{vsred}  {rgb}{0.6,0.1,0.1} % strings
 
+%--------------------------------------------------------------------------------------
+% Lstlisting Settings
+%--------------------------------------------------------------------------------------
+
 \lstset
-{	
-	aboveskip = 3ex,
-	belowskip = 3ex,
-	literate={á}{{\'a}}1
-			 {Á}{{\'A}}1
-			 {é}{{\'e}}1
-			 {É}{{\'E}}1
-			 {í}{{\'i}}1
-			 {Í}{{\'I}}1
-			 {ó}{{\'o}}1
-			 {Ó}{{\'O}}1
-			 {ö}{{\"o}}1
-			 {Ö}{{\"O}}1
-			 {ő}{{\H{o}}}1
-			 {Ő}{{\H{O}}}1
-			 {ú}{{\'u}}1
-			 {Ú}{{\'U}}1
-			 {ü}{{\"u}}1
-			 {Ü}{{\"U}}1
-			 {ű}{{\H{u}}}1
-			 {Ű}{{\H{U}}}1,
-	language = C,
-	language = C++,
-	basicstyle = \small \ttfamily,
-	numbers = left,
-	numberstyle = \tiny,
-	frame = tb,
-	breaklines = true,
-	columns = fullflexible,
-	showstringspaces = false,
-	keywordstyle = \color{vsblue} \bfseries,
-	commentstyle = \color{vsgreen},
-	stringstyle = \color{vsred},
-	tabsize = 4,
-	columns = fixed
+{   
+    aboveskip = 3ex,
+    belowskip = 3ex,
+    literate=
+        {á}{{\'a}}1   {Á}{{\'A}}1   {é}{{\'e}}1   {É}{{\'E}}1
+        {í}{{\'i}}1   {Í}{{\'I}}1   {ó}{{\'o}}1   {Ó}{{\'O}}1
+        {ö}{{\"o}}1   {Ö}{{\"O}}1   {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+        {ú}{{\'u}}1   {Ú}{{\'U}}1   {ü}{{\"u}}1   {Ü}{{\"U}}1
+        {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {€}{{\EUR}}1  {£}{{\pounds}}1,
+    language = C,
+    language = C++,
+    basicstyle = \small \ttfamily,
+    numbers = left,
+    numberstyle = \tiny,
+    frame = tb,
+    breaklines = true,
+    columns = fullflexible,
+    showstringspaces = false,
+    keywordstyle = \color{vsblue} \bfseries,
+    commentstyle = \color{vsgreen},
+    stringstyle = \color{vsred},
+    tabsize = 4,
+    columns = fixed
+}
+
+%--------------------------------------------------------------------------------------
+% NMap
+%--------------------------------------------------------------------------------------
+
+\lstdefinelanguage{NMap}
+{
+    comment = [l]{\$},
+    morecomment = [l]{\#},
+    otherkeywords = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0},
+    keywords = [1]{PORT,STATE,SERVICE,VERSION},
+    keywords = [2]{tcp,udp},
+    keywords = [3]{open},
+    keywords = [4]{filtered,closed},
+    keywords = [5]{1, 2, 3, 4, 5, 6, 7, 8, 9, 0},
+    keywordstyle = [1]\color{NavyBlue},
+    keywordstyle = [2]\color{YellowOrange},
+    keywordstyle = [3]\color{Green},
+    keywordstyle = [4]\color{Red},
+    keywordstyle = [5]\color{RedViolet},
+    commentstyle = \color{Blue},
 }
